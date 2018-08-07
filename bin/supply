@@ -6,7 +6,6 @@ DEPS_DIR=$3
 DEPS_IDX=$4
 
 ORACLE_DIR=$BUILD_DIR/oracle
-INSTANT_CLIENT_DIR=$ORACLE_DIR/instant_client
 
 DOWNLOAD_URL=http://mtsanderson.com
 INSTANT_CLIENT_FILENAME=instantclient-basic-linux.x64-18.3.0.0.0dbru.zip
@@ -17,10 +16,10 @@ if [ ! -f $CACHE_DIR/$INSTANT_CLIENT_FILENAME ]; then
     curl -# -o $CACHE_DIR/$INSTANT_CLIENT_FILENAME $DOWNLOAD_URL/$INSTANT_CLIENT_FILENAME
 fi
 
-echo "Creating directory: $INSTANT_CLIENT_DIR"
-mkdir -p $INSTANT_CLIENT_DIR
+echo "Creating directory: $ORACLE_DIR"
+mkdir -p $ORACLE_DIR
 
-echo "Installing $INSTANT_CLIENT_FILENAME to $INSTANT_CLIENT_DIR"
-unzip -qq $CACHE_DIR/$INSTANT_CLIENT_FILENAME -d $INSTANT_CLIENT_DIR
+echo "Installing $INSTANT_CLIENT_FILENAME to $ORACLE_DIR"
+unzip -qq $CACHE_DIR/$INSTANT_CLIENT_FILENAME -d $ORACLE_DIR 
 
 echo "Finished Installing $INSTANT_CLIENT_FILENAME"
