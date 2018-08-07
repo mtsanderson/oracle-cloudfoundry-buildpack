@@ -30,7 +30,7 @@ if [ ! -d $PROFILE_DIR ]; then
 fi
 cat << EOF > $PROFILE_DIR/oracle.sh
 #!/usr/bin/env bash
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/oracle/instantclient_18_3
+export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:$HOME/oracle/instantclient_18_3
 EOF
 
 echo "Supplied Oracle Instant Client: $INSTANT_CLIENT_FILENAME"
