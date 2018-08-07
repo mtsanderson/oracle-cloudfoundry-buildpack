@@ -7,10 +7,4 @@ if [ ! -f $BUILD_DIR/.oracle ]; then
     exit 1
 fi
 
-if [ ! -f $BUILD_DIR/apt.yml ]; then
-    echo "Application not configured to use cloudfoundry/apt-buildpack"
-    echo "Use cloudfoundry/apt-buildpack to install libaio"
-    exit 1
-fi
-
 exit 0
