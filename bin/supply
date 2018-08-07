@@ -12,25 +12,26 @@ ORACLE_DIR=$BUILD_DIR/oracle
 DOWNLOAD_URL=http://mtsanderson.com
 INSTANT_CLIENT_FILENAME=instantclient-basic-linux.x64-18.3.0.0.0dbru.zip
 
+echo ""
+echo "Supplying Oracle Client $INSTANT_CLIENT_FILENAME"
 
 if [ ! -f $CACHE_DIR/$INSTANT_CLIENT_FILENAME ]; then
-    echo "Downloading Oracle Instant Client: $INSTANT_CLIENT_FILENAME."
+    echo "-----> Downloading $INSTANT_CLIENT_FILENAME"
     curl -s -o $CACHE_DIR/$INSTANT_CLIENT_FILENAME $DOWNLOAD_URL/$INSTANT_CLIENT_FILENAME
 fi
 
-echo "Creating directory: $ORACLE_DIR"
+echo "-----> Installing $INSTANT_CLIENT_FILENAME to $ORACLE_DIR"
 mkdir -p $ORACLE_DIR
-
-echo "Installing $INSTANT_CLIENT_FILENAME to $ORACLE_DIR"
 unzip -qq $CACHE_DIR/$INSTANT_CLIENT_FILENAME -d $ORACLE_DIR 
 
-echo "Apply profile.d script"
-cat << EOF > $PROFILE_DIR/oracle-instant_client.sh
+echo "-----> Applying profile.d script"
+if [ ! -d $PROFILE_DIR ]; then
+    mkdir -p $PROFILE_DIR
+fi
+cat << EOF > $PROFILE_DIR/oracle.sh
 #!/usr/bin/env bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/oracle/instantclient_18_3
 EOF
 
 echo "Supplied Oracle Instant Client: $INSTANT_CLIENT_FILENAME"
-
-
 
