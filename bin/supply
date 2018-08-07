@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+DEPS_DIR=$3
+DEPS_IDX=$4
+
+$ORACLE_DIR=$BUILD_DIR/oracle
+$INSTANT_CLIENT_DIR=$ORACLE_DIR/instant_client
+
+DOWNLOAD_URL=http://mtsanderson.com
+INSTANT_CLIENT_FILENAME=instantclient-basic-linux.x64-18.3.0.0.0dbru.zip
+
+
+if [ ! -f $CACHE_DIR/$INSTANT_CLIENT_FILENAME ]; then
+    echo "Downloading Oracle Instant Client: $INSTANT_CLIENT_FILENAME."
+    curl -# -o $CACHE_DIR/$INSTANT_CLIENT_FILENAME $DOWNLOAD_URL/$INSTANT_CLIENT_FILENAME
+fi
+
+echo "Creating directory: $INSTANT_CLIENT_DIR"
+mkdir -p $INSTANT_CLIENT_DIR
+
+echo "Installing $INSTANT_CLIENT_FILENAME to $INSTANT_CLIENT_DIR"
+unzip -qq $CACHE_DIR/$INSTANT_CLIENT_FILENAME -d $INSTANT_CLIENT_DIR
+
+echo "Finished Installing $INSTANT_CLIENT_FILENAME"
