@@ -5,8 +5,8 @@ CACHE_DIR=$2
 DEPS_DIR=$3
 DEPS_IDX=$4
 
-$ORACLE_DIR=$BUILD_DIR/oracle
-$INSTANT_CLIENT_DIR=$ORACLE_DIR/instant_client
+ORACLE_DIR=$BUILD_DIR/oracle
+INSTANT_CLIENT_DIR=$ORACLE_DIR/instant_client
 
 DOWNLOAD_URL=http://mtsanderson.com
 INSTANT_CLIENT_FILENAME=instantclient-basic-linux.x64-18.3.0.0.0dbru.zip
